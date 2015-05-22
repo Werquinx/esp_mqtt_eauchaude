@@ -17,7 +17,7 @@
 #define MQTT_PASS			"Wer28quin"
 
 #define STA_SSID "XWbureau"
-//#define STA_SSID "xwhome"
+//#define STA_SSID "Pergola"
 #define STA_PASS "wirelessalamaison"
 #define STA_TYPE AUTH_WPA2_PSK
 

@@ -177,6 +177,9 @@ void user_init(void)
 
 	CFG_Load();
 
+	wifi_set_phy_mode (PHY_MODE_11B);
+	WIFI_Connect(sysCfg.sta_ssid, sysCfg.sta_pwd, wifiConnectCb);
+
 	MQTT_InitConnection(&mqttClient, sysCfg.mqtt_host, sysCfg.mqtt_port, sysCfg.security);
 	//MQTT_InitConnection(&mqttClient, "192.168.11.122", 1880, 0);
 
@@ -188,8 +191,8 @@ void user_init(void)
 	MQTT_OnDisconnected(&mqttClient, mqttDisconnectedCb);
 	MQTT_OnPublished(&mqttClient, mqttPublishedCb);
 	MQTT_OnData(&mqttClient, mqttDataCb);
-	wifi_set_phy_mode (PHY_MODE_11B);
-	WIFI_Connect(sysCfg.sta_ssid, sysCfg.sta_pwd, wifiConnectCb);
+
 
 	INFO("\r\nSystem started ...\r\n");
+//	os_printf("SDK version:%d.%d.%d\n", SDK_VERSION_MAJOR, SDK_VERSION_MINOR, SDK_VERSION_REVISION);
 }

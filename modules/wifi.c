@@ -78,7 +78,7 @@ void ICACHE_FLASH_ATTR WIFI_Connect(uint8_t* ssid, uint8_t* pass, WifiCallback c
 	struct station_config stationConf;
 
 	INFO("WIFI_INIT\r\n");
-	wifi_set_opmode(STATION_MODE);
+	wifi_set_opmode(0x03);
 	wifi_station_set_auto_connect(FALSE);
 	wifiCb = cb;
 
@@ -94,6 +94,7 @@ void ICACHE_FLASH_ATTR WIFI_Connect(uint8_t* ssid, uint8_t* pass, WifiCallback c
 	os_timer_arm(&WiFiLinker, 1000, 0);
 
 	wifi_station_set_auto_connect(TRUE);
+	wifi_set_phy_mode (PHY_MODE_11B);
 	wifi_station_connect();
 }
 
